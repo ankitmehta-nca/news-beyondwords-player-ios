@@ -34,9 +34,16 @@ public class PlayerView: UIView {
             webView.isInspectable = true
 #endif
         }
+#if SWIFT_PACKAGE
+        let assetPath = Bundle.module.resourcePath!
+        guard let playerHTMLPath = Bundle.module.path(forResource: "player", ofType: "html") else {
+            fatalError("player.html not found!")
+        }
+#else
         guard let playerHTMLPath = Bundle(for: PlayerView.self).path(forResource: "player", ofType: "html") else {
             fatalError("player.html not found!")
         }
+#endif
         guard let playerHTMLPage = try? String(contentsOfFile: playerHTMLPath) else {
             fatalError("player.html could not be loaded!")
         }
