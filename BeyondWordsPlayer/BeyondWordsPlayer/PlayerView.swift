@@ -35,7 +35,6 @@ public class PlayerView: UIView {
 #endif
         }
 #if SWIFT_PACKAGE
-        let assetPath = Bundle.module.resourcePath!
         guard let playerHTMLPath = Bundle.module.path(forResource: "player", ofType: "html") else {
             fatalError("player.html not found!")
         }
